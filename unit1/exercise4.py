@@ -14,3 +14,8 @@
 #     numberOfLoops += 1 // changed to increment instead of decrement
 
 # print("Number of apples: " + str(numberOfApples))
+
+num = 10
+while num > 3:
+    num -= 1
+    print(num) 
