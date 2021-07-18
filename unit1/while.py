@@ -23,3 +23,12 @@ i = 10
 while i > 0:
     print(i)
     i -= 2
+
+# fibonacci sequence in while loop
+i = 0
+end = 5
+
+while end > 0:
+    i += end
+    end -= 1
+print(i)
