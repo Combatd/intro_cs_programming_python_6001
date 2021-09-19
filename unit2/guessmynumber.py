@@ -22,20 +22,31 @@
 # end while
 # Output("Method failed.") // max number of steps exceeded
 
+a = 0
+b = 100
+
 def high_correct_low_check(response, guess):
-    a = 0
-    b = 100
-    if(response.lower() == "h"):
+    global a, b
+    if(response.lower() == "l"):
         a = guess
-        return (a + b) / 2 # find the new midpoint
+        return int((a + b) / 2) # find the new midpoint
     elif(response.lower() == "c"):
-        return "Game over. Your secret number was: " + str(guess)
-    elif(response.lower() == "l"):
+        print("Game over. Your secret number was: " + str(guess))
+        return -1
+    elif(response.lower() == "h"):
         b = guess
-        return b / 2
+        return int((a + b) / 2)
 
 def guessMyNumber():
+    guess = 50
     print("Please think of a number between 0 and 100!")
-    number_to_guess = input() # take user input for the number
-    
-    
+    int(input()) # take user input for the number
+    print("Is your secret number 50?")
+    while(True):
+        print("Enter 'h' to indicate the guess is too high. Enter 'l' to indicate the guess is too low. Enter 'c' to indicate I guessed correctly.")
+        guess = high_correct_low_check(input(), guess)
+        if(guess < 0): 
+            break
+        print("Is your secret number " + str(guess))
+
+guessMyNumber()
