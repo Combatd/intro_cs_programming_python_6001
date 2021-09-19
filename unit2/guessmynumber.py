@@ -24,25 +24,31 @@
 
 a = 0
 b = 100
+gameOver = False
 
 def high_correct_low_check(response, guess):
-    global a, b
+    global a, b, gameOver
     if(response.lower() == "l"):
         a = guess
         return int((a + b) / 2) # find the new midpoint
     elif(response.lower() == "c"):
         print("Game over. Your secret number was: " + str(guess))
-        return -1
+        gameOver = True
+        return - 1
     elif(response.lower() == "h"):
         b = guess
         return int((a + b) / 2)
+    else:
+        print("sorry, I don't understand your input")
+        high_correct_low_check(input(), guess)
 
 def guessMyNumber():
-    guess = 50
+    global gameOver
+    guess = int(50)
     print("Please think of a number between 0 and 100!")
     int(input()) # take user input for the number
     print("Is your secret number 50?")
-    while(True):
+    while(gameOver == False):
         print("Enter 'h' to indicate the guess is too high. Enter 'l' to indicate the guess is too low. Enter 'c' to indicate I guessed correctly.")
         guess = high_correct_low_check(input(), guess)
         if(guess < 0): 
