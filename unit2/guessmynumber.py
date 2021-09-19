@@ -21,3 +21,21 @@
 #     if sign(f(c)) = sign(f(a)) then a ← c else b ← c // new interval
 # end while
 # Output("Method failed.") // max number of steps exceeded
+
+def high_correct_low_check(response, guess):
+    a = 0
+    b = 100
+    if(response.lower() == "h"):
+        a = guess
+        return (a + b) / 2 # find the new midpoint
+    elif(response.lower() == "c"):
+        return "Game over. Your secret number was: " + str(guess)
+    elif(response.lower() == "l"):
+        b = guess
+        return b / 2
+
+def guessMyNumber():
+    print("Please think of a number between 0 and 100!")
+    number_to_guess = input() # take user input for the number
+    
+    
